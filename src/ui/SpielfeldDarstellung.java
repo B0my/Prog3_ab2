@@ -10,7 +10,7 @@ public class SpielfeldDarstellung {
      * @param ib
      */
     public SpielfeldDarstellung(Interaktionsbrett ib) {
-
+        setIb(ib);
     }
 
     /**
@@ -26,5 +26,9 @@ public class SpielfeldDarstellung {
      */
     public void abwischen() {
 
+    }
+
+    public void setIb(Interaktionsbrett ib) {
+        this.ib = ib;
     }
 }
