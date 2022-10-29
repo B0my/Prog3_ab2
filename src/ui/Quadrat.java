@@ -26,7 +26,7 @@ public class Quadrat {
      * @param ib
      */
     public void darstellenRahmen(Interaktionsbrett ib) {
-
+        ib.neuesRechteck(this.x, this.y, this.seitenlaenge, this.seitenlaenge);
     }
 
     /**
@@ -34,6 +34,7 @@ public class Quadrat {
      * @param ib
      */
     public void darstellenFuellung(Interaktionsbrett ib) {
+
     }
 
     public int getX() {
@@ -97,6 +98,11 @@ public class Quadrat {
 
         public QuadratBuilder setDead() {
             this.amLeben = false;
+            return this;
+        }
+
+        public QuadratBuilder setAlive(){
+            this.amLeben = true;
             return this;
         }
 

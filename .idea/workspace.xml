@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="472ba045-5c34-4508-aa02-8ec6fd94e710" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/NutzerEingabeTest.java" afterDir="false" />
+    <list default="true" id="472ba045-5c34-4508-aa02-8ec6fd94e710" name="Changes" comment="Conways Spiel des Lebens repository erstellt">
+      <change afterPath="$PROJECT_DIR$/src/SpielfeldDarstellungTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SpielDesLebens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpielDesLebens.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logik/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logik/Simulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/NutzerEingabe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/NutzerEingabe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Quadrat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Quadrat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/SpielfeldDarstellung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/SpielfeldDarstellung.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Steuerung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/EinUndAusgabe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/EinUndAusgabe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +85,7 @@
       <updated>1666109996309</updated>
       <workItem from="1666109997750" duration="2852000" />
       <workItem from="1666181364972" duration="5598000" />
+      <workItem from="1666987767936" duration="14796000" />
     </task>
     <servers />
   </component>

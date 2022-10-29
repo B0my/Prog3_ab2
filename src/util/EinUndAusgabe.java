@@ -17,7 +17,9 @@ public class EinUndAusgabe {
      * Konstruktor zur Erzeugung eines Objekts zur Ein- und
      * Ausgabe.
      */
-    public EinUndAusgabe() {
+    public int EinUndAusgabe(int userInput){
+        userInput = leseInteger();
+        return userInput;
     }
 
     /**
