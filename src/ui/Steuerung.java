@@ -14,7 +14,6 @@ public class Steuerung implements BeiAenderung {
     private Simulation simulation;
     private NutzerEingabe io;
 
-
     public Steuerung(Simulation simulation) {
         this.simulation = Objects.requireNonNull(simulation);
         this.initialisierung();
@@ -37,10 +36,13 @@ public class Steuerung implements BeiAenderung {
         int anzahlSchritte;
         do {
             anzahlSchritte = this.io.anzahlDerSimulationsschritte();
+            if (anzahlSchritte < 0)
+                break;
+
             this.simulation.berechneFolgeGeneration(anzahlSchritte);
         } while (anzahlSchritte >= 0);
-
         System.out.println("-------------------------------------------------------------" + "\n" + "Und Tschuess!!!");
+
     }
 
 

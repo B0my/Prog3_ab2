@@ -47,7 +47,7 @@ public class NutzerEingabe {
         do {
             io.ausgeben("Bitte einen Gültigen Wert zwischen 1 - " + Integer.MAX_VALUE + " Eingeben: ");
             input = io.leseInteger();
-        } while (input < 1);
+        } while (input < -1);
         return input;
     }
 }
