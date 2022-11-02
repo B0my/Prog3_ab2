@@ -4,8 +4,12 @@ import util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
     private Interaktionsbrett ib;
-    private final int FRAME_WIDTH = 500;
-    private final int FRAME_HEIGHT = 500;
+
+    // bei 1440p Monitoren
+    private final int FRAME_WIDTH = 1200;
+
+    // bei 1080p Monitoren
+    // private final int FRAME_WIDTH = 940
     private int margin = 10;
 
     /**
