@@ -3,6 +3,7 @@ package logik;
 import util.EinUndAusgabe;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Simulator implements Simulation {
@@ -34,32 +35,60 @@ public class Simulator implements Simulation {
      */
     @Override
     public void berechneFolgeGeneration(int berechnungsschritte) {
-        for (int z = 0; z < berechnungsschritte; z++) {
-            for (int i = 0; i < spielfeld.length; i++) {
-                for (int j = 0; j < spielfeld.length; j++) {
-                    int switchCriteria = ccZellenposition(i, j);
-                    int anzahlNachbarn = nachbarZaehlung(i, j, switchCriteria);
+        if (berechnungsschritte < 1)
+            return;
+        if (this.spielfeld == null)
+            throw new IllegalStateException("Initialisierung fehlgeschlagen");
 
-                    /**
-                     * 1. Fall Zelle bewohnt - Wenn Zelle 2 - 3 Nachbarn hat -> bleibt am leben
-                     *  else Zelle Stirbt
-                     */
-                    if (spielfeld[i][j] && !(anzahlNachbarn == 2 || anzahlNachbarn == 3))
-                        spielfeld[i][j] = false;
+        boolean[][] neueGeneration = new boolean[this.anzahlFelder][this.anzahlFelder];
 
-                    /**
-                     * 2. Fall Zelle Unbewohnt - Wenn Zelle 3 Nachbarn hat -> Zelle wird bewohnt
-                     * else Zelle bleibt Unbewohnt
-                     */
-                    if (!spielfeld[i][j] && !(anzahlNachbarn == 3))
-                        spielfeld[i][j] = true;
-
-                }
+        for (int i = 0; i < this.anzahlFelder; ++i) {
+            for (int j = 0; j < this.anzahlFelder; ++j) {
+                neueGeneration[i][j] = this.zellenBerechnung(i, j);
             }
         }
+        if (Arrays.deepEquals(neueGeneration, this.spielfeld)) {
+            System.out.println("Keine Änderung!");
+            return;
+        }
+
+        this.spielfeld = neueGeneration;
+        this.aktualisiere(this.spielfeld);
+
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        this.berechneFolgeGeneration(berechnungsschritte -1);
     }
 
-    private int nachbarZaehlung(int x, int y, int indicator) {
+    private boolean zellenBerechnung(int cell, int column) {
+        int neighbourCounter = 0;
+
+        for (int i = -1; i <= 1; ++i) {
+            if (cell + i < 0 || cell + i >= this.anzahlFelder) // Zeile außerhalb des Spielfeldes
+                continue;
+
+            for (int j = -1; j <= 1; ++j) {
+                if (column + j < 0 || column + j >= this.anzahlFelder) // Spalte außerhalb des Spielfeldes
+                    continue;
+
+                if (i == 0 && j == 0) // aktuelle Zelle
+                    continue;
+
+                if (this.spielfeld[cell + i][column + j])
+                    neighbourCounter++;
+            }
+        }
+        if (this.spielfeld[cell][column])
+            return neighbourCounter == 2 || neighbourCounter == 3; // Bleibt lebendig
+
+        return neighbourCounter == 3; // Wird lebendig
+    }
+
+   /* private int nachbarZaehlung(int x, int y, int indicator) {
         int counter = 0;
 
         switch (indicator) {
@@ -180,7 +209,7 @@ public class Simulator implements Simulation {
                 return 8; // Untere Reihe zwischen den Ecken 5 Nachbarn
 
         return -1; // Eingabe Fehlerhaft
-    }
+    }*/
 
     /**
      * @param beiAenderung

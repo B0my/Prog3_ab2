@@ -14,24 +14,6 @@ public class Quadrat {
         setSeitenlaenge(laenge);
     }
 
-
-    /**
-     * @param ib
-     */
-    public void darstellenRahmen(Interaktionsbrett ib) {
-        ib.neuesRechteck(this.x, this.y, this.seitenlaenge, this.seitenlaenge);
-    }
-
-    /**
-     * @param ib
-     */
-    public void darstellenFuellung(Interaktionsbrett ib) {
-        this.darstellenRahmen(ib);
-        for (int div = 1; div < seitenlaenge; div++) {
-            ib.neueLinie(x, y, x + seitenlaenge / div, y + seitenlaenge / div);
-        }
-    }
-
     public void setX(int x) {
         if (x < 0)
             throw new IllegalArgumentException("X-Position muss positiv sein");
@@ -52,7 +34,23 @@ public class Quadrat {
         this.seitenlaenge = seitenlaenge;
     }
 
+
     /**
-     * Ab hier Builder Klasse für Quadrate
+     * @param ib
      */
+    public void darstellenRahmen(Interaktionsbrett ib) {
+        ib.neuesRechteck(this.x, this.y, this.seitenlaenge, this.seitenlaenge);
+    }
+
+    /**
+     * @param ib
+     */
+    public void darstellenFuellung(Interaktionsbrett ib) {
+        this.darstellenRahmen(ib);
+        int i = 2;
+        while (i < this.seitenlaenge -1){
+            ib.neueLinie(this.x + i, this.y + 2, this.x + i, this.y + this.seitenlaenge - 2);
+            i++;
+        }
+    }
 }

@@ -4,7 +4,7 @@ import util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
     private Interaktionsbrett ib;
-    private final int FRAME_WIDTH = 380;
+    private final int FRAME_WIDTH = 500;
     private final int FRAME_HEIGHT = 500;
     private int margin = 10;
 
