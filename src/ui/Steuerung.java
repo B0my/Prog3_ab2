@@ -51,14 +51,6 @@ public class Steuerung implements BeiAenderung {
      */
     @Override
     public void aktualisiere(boolean[][] neueGeneration) {
-        BeiAenderung aenderung = new BeiAenderung() {
 
-            @Override
-            public void aktualisiere(boolean[][] neueGeneration) {
-                spielfeldDarstellung.abwischen();
-                spielfeldDarstellung.erstelleSpielRahmen();
-                spielfeldDarstellung.spielfeldDarstellen(neueGeneration);
-            }
-        };
     }
 }

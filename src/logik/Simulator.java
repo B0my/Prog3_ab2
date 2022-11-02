@@ -5,8 +5,14 @@ import util.EinUndAusgabe;
 public class Simulator implements Simulation {
 
     private boolean[][] spielfeld;
-    private BeiAenderung beiAenderung;
+    private final BeiAenderung beiAenderung = null;
     private int anzahlFelder;
+
+    public Simulator(){
+        this.beiAenderung.aktualisiere();
+        this.spielfeld;
+        anmeldenFuerAktualisierungBeiAenderung(this.beiAenderung);
+    }
 
 
     /**
@@ -188,7 +194,7 @@ public class Simulator implements Simulation {
      */
     @Override
     public void anmeldenFuerAktualisierungBeiAenderung(BeiAenderung beiAenderung) {
-
+        this.spielfeld =  this.beiAenderung.aktualisiere();
         this.beiAenderung.aktualisiere(this.spielfeld);
     }
 }
