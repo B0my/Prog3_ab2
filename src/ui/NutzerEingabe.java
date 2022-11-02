@@ -4,6 +4,7 @@ import util.EinUndAusgabe;
 
 public class NutzerEingabe {
     private EinUndAusgabe io;
+    private final int MINDESTZELLENANZAHL = 3;
 
     /**
      * @param io
@@ -17,12 +18,11 @@ public class NutzerEingabe {
      */
     public int anzahlZellenDesSpielfeds() {
         int input;
-        while (true) {
+        do {
+            io.ausgeben("Anzahl der Zellen (mindestens " + MINDESTZELLENANZAHL + "): ");
             input = io.leseInteger();
-            if ((input <= 100) && (input >= 1)) {
-                return io.leseInteger();
-            }
-        }
+        } while (input < MINDESTZELLENANZAHL);
+        return input;
     }
 
     /**
@@ -30,15 +30,11 @@ public class NutzerEingabe {
      */
     public int wahrscheinlichkeitDerBesiedelung() {
         int input;
-        while (true) {
+        do {
+            io.ausgeben("Bitte einen Gültigen Wert zwischen 1 - 100 Eingeben: ");
             input = io.leseInteger();
-            if ((input <= 100) && (input >= 1)) {
-                return input;
-
-            } else {
-                System.out.println("Bitte einen Gültigen Wert zwischen 1 - 100 Eingeben: ");
-            }
-        }
+        } while (input < 1 || input > 100);
+        return input;
     }
 
     /**
@@ -48,19 +44,11 @@ public class NutzerEingabe {
      */
     public int anzahlDerSimulationsschritte() {
         int input;
-        while (true) {
+        do {
+            io.ausgeben("Bitte einen Gültigen Wert zwischen 1 - " + Integer.MAX_VALUE + " Eingeben: ");
             input = io.leseInteger();
-            if ((input <= Integer.MAX_VALUE) && (input >= 1)) {
-                return input;
-
-            } else {
-                System.out.println("Bitte einen Gültigen Wert zwischen 1 - " + Integer.MAX_VALUE + " Eingeben: ");
-            }
-        }
-    }
-
-    public EinUndAusgabe getIo() {
-        return this.io;
+        } while (input < 1);
+        return input;
     }
 }
 

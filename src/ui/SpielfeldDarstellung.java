@@ -13,21 +13,21 @@ public class SpielfeldDarstellung {
      */
     public SpielfeldDarstellung(Interaktionsbrett ib) {
         this.ib = ib;
-        erstelleSpielRahmen();
     }
 
     /**
      * @param spielfeld
      */
     public void spielfeldDarstellen(boolean[][] spielfeld) {
-        for (int i = 1; i <= spielfeld.length; i++) {
-            for (int j = 1; j <= spielfeld.length; j++) {
-                if (spielfeld[i][j] == true) {
-                    ib.neuesRechteck(i * i + margin, j * j + margin, 10, 10);
-
-                }else {
-                    ib.neuesRechteck(i * i + margin, j * j + margin, 10, 10);
-                }
+        this.abwischen();
+        int seitenlaenge = this.FRAME_WIDTH / spielfeld.length;
+        for (int i = 0; i < spielfeld.length; ++i) {
+            for (int j = 0; j < spielfeld.length; ++j) {
+                Quadrat zelle = new Quadrat(this.margin + j* seitenlaenge, this.margin + i * seitenlaenge, seitenlaenge);
+                if(spielfeld[i][j])
+                    zelle.darstellenFuellung(this.ib);
+                else
+                    zelle.darstellenRahmen(this.ib);
             }
         }
     }
@@ -37,7 +37,4 @@ public class SpielfeldDarstellung {
         ib.abwischen();
     }
 
-    public void erstelleSpielRahmen() {
-        ib.neuesRechteck(margin, margin, FRAME_WIDTH - margin * 2, FRAME_HEIGHT - margin * 2);
-    }
 }

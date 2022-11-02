@@ -6,7 +6,7 @@ import util.Interaktionsbrett;
 
 public class SpielDesLebens {
     public static void main(String[] args) {
-        Steuerung mainApp = new Steuerung();
+        Steuerung mainApp = new Steuerung(new Simulator());
         mainApp.startDesSpiels();
     }
 

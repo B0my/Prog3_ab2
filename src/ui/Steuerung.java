@@ -7,50 +7,48 @@ import util.EinUndAusgabe;
 import util.Interaktionsbrett;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Steuerung implements BeiAenderung {
     private SpielfeldDarstellung spielfeldDarstellung;
-    private Simulation simulation = new Simulator();
+    private Simulation simulation;
     private NutzerEingabe io;
 
 
-    /**
-     *
-     */
-    public void startDesSpiels() {
-        initialisierung();
+    public Steuerung(Simulation simulation) {
+        this.simulation = Objects.requireNonNull(simulation);
+        this.initialisierung();
     }
 
     /**
      *
      */
     private void initialisierung() {
-        int userInput1;
-        int userInput2;
-
-        this.simulation = new Simulator();
-        this.io = new NutzerEingabe(new EinUndAusgabe());
         this.spielfeldDarstellung = new SpielfeldDarstellung(new Interaktionsbrett());
-
-        System.out.print("Anzahl der Zellen: ");
-        userInput1 = io.getIo().leseInteger();
-        System.out.print("\nWahrscheinlichkeit einer Besiedelung (1-100): ");
-        userInput2 = io.getIo().leseInteger();
-        System.out.print("\nAnzahl durchzufuehrender Simulationsschritte (Abbruch mit negativer Zahl): ");
-        userInput1 = io.getIo().leseInteger();
-        this.simulation.berechneAnfangsGeneration(userInput1,userInput2);
-        if (userInput1 < 0)
-            System.out.println("Programm beenden :)");
-        else
-            this.simulation.berechneFolgeGeneration(userInput1);
-        this.simulation.anmeldenFuerAktualisierungBeiAenderung(this::aktualisiere);
+        this.io = new NutzerEingabe(new EinUndAusgabe());
+        this.simulation.anmeldenFuerAktualisierungBeiAenderung(this);
     }
+
+    public void startDesSpiels() {
+        int anzahlZellen = this.io.anzahlZellenDesSpielfeds();
+        int wahrscheinlichkeit = this.io.wahrscheinlichkeitDerBesiedelung();
+        this.simulation.berechneAnfangsGeneration(anzahlZellen, wahrscheinlichkeit);
+
+        int anzahlSchritte;
+        do {
+            anzahlSchritte = this.io.anzahlDerSimulationsschritte();
+            this.simulation.berechneFolgeGeneration(anzahlSchritte);
+        } while (anzahlSchritte >= 0);
+
+        System.out.println("-------------------------------------------------------------" + "\n" + "Und Tschuess!!!");
+    }
+
 
     /**
      * @param neueGeneration
      */
     @Override
     public void aktualisiere(boolean[][] neueGeneration) {
-
+        this.spielfeldDarstellung.spielfeldDarstellen(neueGeneration);
     }
 }

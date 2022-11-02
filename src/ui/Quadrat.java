@@ -4,25 +4,18 @@ import util.Interaktionsbrett;
 
 public class Quadrat {
 
-    private boolean amLeben;
     private int x;
     private int y;
     private int seitenlaenge;
 
-    public Quadrat(){
-        setSeitenlaenge(10);
-    }
-
-    public Quadrat(int x, int y, int laenge){
+    public Quadrat(int x, int y, int laenge) {
         setX(x);
         setY(y);
         setSeitenlaenge(laenge);
     }
 
 
-
     /**
-     *
      * @param ib
      */
     public void darstellenRahmen(Interaktionsbrett ib) {
@@ -30,18 +23,18 @@ public class Quadrat {
     }
 
     /**
-     *
      * @param ib
      */
     public void darstellenFuellung(Interaktionsbrett ib) {
-
-    }
-
-    public int getX() {
-        return x;
+        this.darstellenRahmen(ib);
+        for (int div = 1; div < seitenlaenge; div++) {
+            ib.neueLinie(x, y, x + seitenlaenge / div, y + seitenlaenge / div);
+        }
     }
 
     public void setX(int x) {
+        if (x < 0)
+            throw new IllegalArgumentException("X-Position muss positiv sein");
         this.x = x;
     }
 
@@ -50,11 +43,9 @@ public class Quadrat {
     }
 
     public void setY(int y) {
+        if (y < 0)
+            throw new IllegalArgumentException("Y-Position muss negativ sein");
         this.y = y;
-    }
-
-    public int getSeitenlaenge() {
-        return seitenlaenge;
     }
 
     public void setSeitenlaenge(int seitenlaenge) {
@@ -64,51 +55,4 @@ public class Quadrat {
     /**
      * Ab hier Builder Klasse für Quadrate
      */
-
-    private Quadrat(QuadratBuilder builder) {
-        this.x=builder.x;
-        this.y=builder.y;
-        this.seitenlaenge= builder.seitenlaenge;
-        this.amLeben=builder.amLeben;
-    }
-
-    //Builder Class
-    public static class QuadratBuilder{
-
-        // required parameters
-        private int x;
-        private int y;
-        private int seitenlaenge;
-        private boolean amLeben;
-
-        public QuadratBuilder(int x, int y){
-            this.x = x;
-            this.y = y;
-
-            this.seitenlaenge = 10;
-            this.amLeben = false;
-        }
-
-        public QuadratBuilder(int x, int y, int laenge, boolean leben){
-            this.x=x;
-            this.y=y;
-            this.seitenlaenge=laenge;
-            this.amLeben = leben;
-        }
-
-        public QuadratBuilder setDead() {
-            this.amLeben = false;
-            return this;
-        }
-
-        public QuadratBuilder setAlive(){
-            this.amLeben = true;
-            return this;
-        }
-
-        public Quadrat build(){
-            return new Quadrat(this);
-        }
-
-    }
 }

@@ -2,18 +2,14 @@ package logik;
 
 import util.EinUndAusgabe;
 
+import javax.swing.*;
+import java.util.Random;
+
 public class Simulator implements Simulation {
 
     private boolean[][] spielfeld;
-    private final BeiAenderung beiAenderung = null;
+    private BeiAenderung beiAenderung;
     private int anzahlFelder;
-
-    public Simulator(){
-        this.beiAenderung.aktualisiere();
-        this.spielfeld;
-        anmeldenFuerAktualisierungBeiAenderung(this.beiAenderung);
-    }
-
 
     /**
      * @param anzahlDerZellen
@@ -21,18 +17,16 @@ public class Simulator implements Simulation {
      */
     @Override
     public void berechneAnfangsGeneration(int anzahlDerZellen, int wahrscheinlichkeitDerBesiedlung) {
-        this.anzahlFelder = anzahlDerZellen * anzahlDerZellen;
+        this.anzahlFelder = anzahlDerZellen;
         this.spielfeld = new boolean[anzahlDerZellen][anzahlDerZellen];
+        Random random = new Random();
+
         for (int i = 0; i < spielfeld.length; i++) {
             for (int j = 0; j < spielfeld.length; j++) {
-                if (wahrscheinlichkeitDerBesiedlung >= 0) {
-                    this.spielfeld[i][j] = true;
-                } else {
-                    spielfeld[i][j] = false;
-                }
+                this.spielfeld[i][j] = random.nextInt(100) < wahrscheinlichkeitDerBesiedlung;
             }
         }
-        this.beiAenderung.aktualisiere(this.spielfeld);
+        this.aktualisiere(this.spielfeld);
     }
 
     /**
@@ -60,7 +54,6 @@ public class Simulator implements Simulation {
                     if (!spielfeld[i][j] && !(anzahlNachbarn == 3))
                         spielfeld[i][j] = true;
 
-            //        anmeldenFuerAktualisierungBeiAenderung(this.beiAenderung);
                 }
             }
         }
@@ -194,7 +187,11 @@ public class Simulator implements Simulation {
      */
     @Override
     public void anmeldenFuerAktualisierungBeiAenderung(BeiAenderung beiAenderung) {
-        this.spielfeld =  this.beiAenderung.aktualisiere();
-        this.beiAenderung.aktualisiere(this.spielfeld);
+        this.beiAenderung = beiAenderung;
+    }
+
+    private void aktualisiere(boolean[][] neu) {
+        if (this.beiAenderung != null)
+            beiAenderung.aktualisiere(neu);
     }
 }
