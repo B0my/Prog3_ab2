@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="472ba045-5c34-4508-aa02-8ec6fd94e710" name="Changes" comment="FRAME_WIDTH in SpielfeldDarstellung.java auf bestimmte Monitorgrößen verändert">
+    <list default="true" id="472ba045-5c34-4508-aa02-8ec6fd94e710" name="Changes" comment="Programm wird nun selber durch Benutzereingabe geschlossen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpielDesLebens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpielDesLebens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/NutzerEingabe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/NutzerEingabe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutzerEingabeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SpielfeldDarstellungTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logik/BeiAenderung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logik/BeiAenderung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logik/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logik/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logik/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logik/Simulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Steuerung.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667392882239</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Programm wird nun selber durch Benutzereingabe geschlossen">
+      <created>1667394066018</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667394066018</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +142,7 @@
     <MESSAGE value="Komplette überarbeitung des zweiten Arbeitesblattes" />
     <MESSAGE value="Debugging von Dummen Fehlern" />
     <MESSAGE value="FRAME_WIDTH in SpielfeldDarstellung.java auf bestimmte Monitorgrößen verändert" />
-    <option name="LAST_COMMIT_MESSAGE" value="FRAME_WIDTH in SpielfeldDarstellung.java auf bestimmte Monitorgrößen verändert" />
+    <MESSAGE value="Programm wird nun selber durch Benutzereingabe geschlossen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Programm wird nun selber durch Benutzereingabe geschlossen" />
   </component>
 </project>

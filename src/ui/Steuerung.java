@@ -2,11 +2,9 @@ package ui;
 
 import logik.BeiAenderung;
 import logik.Simulation;
-import logik.Simulator;
 import util.EinUndAusgabe;
 import util.Interaktionsbrett;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class Steuerung implements BeiAenderung {
@@ -31,7 +29,7 @@ public class Steuerung implements BeiAenderung {
     public void startDesSpiels() {
         int anzahlZellen = this.io.anzahlZellenDesSpielfeds();
         int wahrscheinlichkeit = this.io.wahrscheinlichkeitDerBesiedelung();
-        this.simulation.berechneAnfangsGeneration(anzahlZellen, wahrscheinlichkeit);
+        this.simulation.calculateFirstGeneration(anzahlZellen, wahrscheinlichkeit);
 
         int anzahlSchritte;
         do {
@@ -39,7 +37,7 @@ public class Steuerung implements BeiAenderung {
             if (anzahlSchritte < 0)
                 break;
 
-            this.simulation.berechneFolgeGeneration(anzahlSchritte);
+            this.simulation.calculateNextGeneration(anzahlSchritte);
         } while (anzahlSchritte >= 0);
         System.out.println("-------------------------------------------------------------" + "\n" + "Und Tschuess!!!");
 
